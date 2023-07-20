@@ -1,0 +1,35 @@
+<body>
+  <script>
+    const a = new Promise((res, rej) => 5);
+    console.log('a: ', a);
+
+    const b = new Promise((res, rej) => res(5));
+    console.log('b: ', b);
+
+    const c = new Promise((res, rej) => res(5)).then((result) => {
+      console.log(result * result);
+      return 17;
+    });
+    console.log('c: ', c);
+    setTimeout(console.log('c2: ', c), 3000);
+
+    const d = new Promise((res, rej) => res(5)).then((result) => {
+      console.log(result * result);
+      res(17);
+    });
+    console.log('d: ', d);
+
+    const e = new Promise((res, rej) => res(5));
+    let f = e.then((result) => {
+      alert(result * result);
+      return 17;
+    });
+
+    console.log('e: ', e);
+    console.log('f: ', f);
+    setTimeout(console.log('debugger'), 3000);
+    console.log('e: ', e);
+    console.log('f: ', f);
+    debugger;
+  </script>
+</body>
