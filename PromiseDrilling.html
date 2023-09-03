@@ -1,7 +1,7 @@
 <body>
   <div style="border: blue 5px solid; font-size: 46px"></div>
   <script>
-    debugger;
+    // debugger;
 
     const obj = {
       a: 42,
@@ -58,7 +58,8 @@
     const e = new Promise((res, rej) => res(5));
     console.log('e: ', e);
     let f = e.then((result) => {
-      alert(result * result);
+//      alert(result * result);
+      console.log('alert: ');
       return 17;
     });
 
@@ -70,6 +71,12 @@
 
     setTimeout(() => console.log('1'), 5000);
     setTimeout(console.log('2'), 5000);
-  </script>
+
+    const g = new Promise((res, rej) => {
+        console.log('Создание промиса');
+        res(5656567);
+    });
+    console.log('Создали промис');
+    g.then((res) => console.log('Запустили промис', res));</script>
   <!-- comment for ssh-keys test -->
 </body>
