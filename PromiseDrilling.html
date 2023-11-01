@@ -77,6 +77,18 @@
         res(5656567);
     });
     console.log('Создали промис');
-    g.then((res) => console.log('Запустили промис', res));</script>
+    g.then((res) => console.log('Запустили промис', res));
+
+    const h = new Promise((res, rej) => {
+        console.log('Создание h');
+        res(777);
+    });
+    console.log('Создали промис h');
+    h.finally(()=> {console.log('finally h');}).then((res) => { console.log('Запустили промис h', res); return res + 1; }).then((res) => { console.log('второй раз рез', res); return res + 1; }).then((res) => { throw new Error('Invalid')}).finally(()=> {console.log('finally hhhh');}).catch((err) => { console.log(err.message); return 888}).then((res) => {console.log(res); });    
+    
+    
+    
+    
+    </script>
   <!-- comment for ssh-keys test -->
 </body>
