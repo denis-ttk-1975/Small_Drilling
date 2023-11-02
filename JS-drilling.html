@@ -1,0 +1,174 @@
+
+<body>
+// 01. Есть 3 вложенных элемента FORM > DIV > P, с обработчиком на каждом:
+// Какой(какие) alert'ы вызовутся при клике на DIV
+
+<form onclick="alert('form')">FORM
+  <div onclick="alert('div')">DIV
+    <p onclick="alert('p')">P</p>
+  </div>
+</form>
+
+// 02. Есть список. Как добавить onclick event, чтобы можно было кликнуть
+// по элементу списку и определить элемент, на котором был клик.
+
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>n+1</li>
+</ul>
+
+
+
+<script>
+    
+/** *********************************** */
+// 03
+
+const a = { value: 0 };
+
+const b = {
+  data: a
+};
+
+const c = { ...a };
+
+const d = b.data;
+
+d.value = 10;
+
+b.data.value = 5;
+
+c.value = 7;
+
+// a.value ?
+// a.value === c.value ?
+// a.value === d.value ?
+
+
+/** *********************************** */
+
+// 04. Почему нельзя использовать такую конструкцию?
+
+const someString = 'my value'
+
+someString.myNumber = 5;
+
+// 05.
+
+function aa() {
+  const sum = 1 + 5;
+  console.log(sum);
+}
+
+function bb() {
+  const someValue = '123';
+  console.log(someValue);
+}
+
+
+console.log('a.prototype === a.__proto__ ?: ', aa.prototype === aa.__proto__ );
+console.log('aa.__proto__: ', aa.__proto__);
+console.log('aa.prototype: ', aa.prototype);
+
+
+console.log('a.prototype === b.prototype ?: ', aa.prototype === bb.prototype );
+
+console.log('a.__proto__ === b.__proto__ ?: ', aa.__proto__ === bb.__proto__ );
+
+
+
+
+// 06. Что выведется в консоль? 
+
+function someF() {
+  function a() {
+    console.log("test B");
+  }
+
+  function a() {
+    console.log("test A");
+  }
+
+  a();
+}
+
+someF();
+
+
+// 07. Как будет порядок вызовов ?
+
+   (function() {
+      console.log("this is the start"); // 1
+      Promise.resolve(console.log("promise 1")); // 4
+      setTimeout(function cb1() {
+        //
+        console.log("timeout 0");
+      }, 2000); 8
+
+      setTimeout(function cb() {
+        //
+        console.log("timeout 1");
+      }); 6
+
+      console.log("this is just a message"); // 2
+
+      setTimeout(function cb1() {
+        //
+        console.log("timeout 2");
+      }, 0); 7
+
+      new Promise((res, rj) => res("promise 2")).then(console.log); //5
+
+      console.log("this is the end?"); // 3
+    }
+  )();
+
+// 08. Какой будет результат у вызова sayHi?
+"use strict";
+
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  function sayHi() {
+    alert(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();
+
+// 09. Какой будет результат выполнения кода?
+
+let user = {
+  firstName: "Вася",
+  sayHi() {
+    alert(`Привет, ${this.firstName}!`);
+  }
+};
+
+setTimeout(user.sayHi, 1000);
+
+// 10. Описать новый массив, который вернет массив из online users с добавленным свойств из объекта dto
+// [{ name: "Maxim", id: "uuid1", online: true, department: "SMB", number: 0 } ...]
+
+const users = [
+  { name: "Maxim", id: "uuid1", online: true },
+  { name: "Andrew", id: "uuid2", online: false },
+  { name: "Alex", id: "uuid3", online: true },
+  { name: "Peter", id: "uuid4", online: false }
+];
+
+const dto = { department: "SMB", number: 0 };
+
+users = users.filter((item) => item.online === true).map(item => { return {...item, ...dto}} )
+users1 = users.reduce((acc, item) => {if (item.online === true) {
+acc.push({...item, ...dto});
+
+}return acc;}, [])
+</script>
+
+
+</body>
