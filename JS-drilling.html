@@ -168,6 +168,170 @@ users1 = users.reduce((acc, item) => {if (item.online === true) {
 acc.push({...item, ...dto});
 
 }return acc;}, [])
+
+// 0
+const func = () => {
+  var a = 1
+  // var a = 1
+  let b = 1
+  // let b = 1
+  // const letter = sdkjflsljdkf
+  console.log('func')
+}
+// func()
+
+
+2 + 2 + '1';
+'1' + 2 + 2;
+'6' - '2';
+
+
+const text = 'Строка'
+// console.log(typeof text)
+const firstLetter = text.slice(0,1)
+// console.log(firstLetter)
+
+
+
+// 1. Поменять формат, привести к виду 20.01.2023
+const string = '2023-01-20'
+
+
+// 2. Добавить каждому юзеру поле age с порядковым номером
+const users = [
+  { id: 1, name: 'Pavel', gender: 'male' },
+  { id: 2, name: 'Olga', gender: 'female' },
+  { id: 3, name: 'Vika', gender: 'female' },
+  { id: 4, name: 'Ivan', gender: 'male' }
+]
+
+const newUser = users.map((item, index) => { return {...item, age: index}})
+
+// В чем отличие, и есть ли оно?
+const getMaleNames = () => {
+  const gender = users
+    .filter(user =>  user.gender === 'male')
+    .map(user => user.name)
+
+  const gender2 = users.reduce((acc, user) => 
+    user.gender === 'male' ? acc.concat(user.name) : acc
+  , [])
+
+  console.log(gender, 'gender')
+  console.log(gender2, 'gender2')
+}
+
+getMaleNames()
+
+
+//  3. Собрать уникальные категории с аккаунтами
+const accounts = [
+  {
+    id: "1328295",
+    name: "FCKrasnodar",
+    group_name: "ФК Краснодар",
+    group_sort: 23,
+    group_id: "50"
+  },
+  {
+    id: "1639133",
+    name: "livedune",
+    group_name: "Livedune",
+    group_sort: 24,
+    group_id: "39"
+  },
+  {
+    id: "1639763",
+    name: "rosakhutor",
+    group_name: "Rosa",
+    group_sort: 17,
+    group_id: "30980"
+  },
+  {
+    id: "1639958",
+    name: "aroma.education",
+    group_name: "Общая категория",
+    group_sort: 9999,
+    group_id: "0"
+  },
+  {
+    id: "2809",
+    name: "beelinerus",
+    group_name: "Общая категория",
+    group_sort: 9999,
+    group_id: "0"
+  },
+  {
+    id: "1328169",
+    name: "splat_global",
+    group_name: "Категория 1",
+    group_sort: 25,
+    group_id: "30978"
+  },
+  {
+    id: "1323369",
+    name: "4.life.yoga",
+    group_name: "Категория 1",
+    group_sort: 25,
+    group_id: "30978"
+  },
+  {
+    id: "1640753",
+    name: "adore.perfumery.cosmetics",
+    group_name: "Категория 1",
+    group_sort: 25,
+    group_id: "30978"
+  },
+  {
+    id: "1640417",
+    name: "alena.yanovich",
+    group_name: "Категория 1",
+    group_sort: 25,
+    group_id: "30978"
+  },
+  {
+    id: "1639498",
+    name: "boljedorsychev",
+    group_name: "Общая категория",
+    group_sort: 9999,
+    group_id: "0"
+  }
+];
+
+// Пример как должно быть на выходе:
+// const categories = [
+//   {
+//     id: "30980", //group_id
+//     name: "Rosa", //group_name
+//     sort: 17, //group_sort
+//     accounts: [
+//       {
+//         id: "1639763",
+//         name: "rosakhutor",
+//         group_name: "Rosa",
+//         group_sort: 17,
+//         group_id: "30980"
+//       },
+//       ...
+//     ]
+//   }
+// ];
+
+
+// 4. Отсортировать категории по полю sort от меньшего к большему
+
+
+// 5. Пометить каждый аккаунт категории флагом selected, если id аккаунта содержится в массиве
+const selected = [1323369, 1640753, 1640417];
+
+
+//  6. Запрос на бэк
+const getUsers = () => {
+  fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => console.log(json))
+} 
+// getUsers()
 </script>
 
 
