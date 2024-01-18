@@ -2,6 +2,18 @@
   <div style="border: blue 5px solid; font-size: 46px"></div>
   <script>
     // debugger;
+    setTimeout(console.log('Елена'), 0);
+    setTimeout(() => console.log('Елена222'), 0);
+
+
+
+    const denis = Promise.resolve('denis1');
+
+denis.then((value) => {
+  console.log(value);
+  // Expected output: 123
+});
+
 
     const obj = {
       a: 42,
