@@ -98,7 +98,32 @@ denis.then((value) => {
     console.log('Создали промис h');
     h.finally(()=> {console.log('finally h');}).then((res) => { console.log('Запустили промис h', res); return res + 1; }).then((res) => { console.log('второй раз рез', res); return res + 1; }).then((res) => { throw new Error('Invalid')}).finally(()=> {console.log('finally hhhh');}).catch((err) => { console.log(err.message); return 888}).then((res) => {console.log(res); });    
     
-    
+    const i_promise = () => Promise.resolve("I have resolved!");
+    function firstFunction() {
+        i_promise().then(res => {console.log(res); console.log('метка then firstFunction' );});
+        console.log('firstFunction');
+    }
+
+    async function secondFunction() {
+        console.log('местка старта secondFunction');
+
+        console.log(await i_promise());
+        console.log('secondFunction');
+        return 'возврат второй функции'
+    }
+
+    firstFunction();
+    let secFuncResult = secondFunction();
+    console.log('secFuncResult: ', secFuncResult);
+
+    const longPromise = () => Promise.resolve('long promise')
+    longPromise()
+    .then(res => { console.log(res, 'первый then long promise'); throw Error('ошибка из первого then') })
+    .finally(() => console.log('finally из longPromise'))
+    .finally(console.log('самый быстрый finally из longPromise'))
+    .catch(err => { console.log(err, 'первый catch long promise'); return 'возврат из catch longPromise'})
+    .then(res => { console.log(res, 'второй then long promise') })
+
     
     
     </script>
